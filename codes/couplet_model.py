@@ -16,9 +16,9 @@ def Couplet_Model(x, voca_size, hidden_dim, max_length=7):
     x = MyBidirectional(LSTM(hidden_dim, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
     x = MyBidirectional(LSTM(hidden_dim, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
     x = MyBidirectional(LSTM(hidden_dim, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
-    x = MyBidirectional(LSTM(hidden_dim // 2, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
-    x = MyBidirectional(LSTM(hidden_dim // 2, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
-    x = MyBidirectional(LSTM(hidden_dim // 2, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
+    x = MyBidirectional(LSTM(hidden_dim, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
+    x = MyBidirectional(LSTM(hidden_dim, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
+    x = MyBidirectional(LSTM(hidden_dim, dropout=0.1, recurrent_dropout=0.1, return_sequences=True))(x)
 
     x = Dense(voca_size)(x)
 
