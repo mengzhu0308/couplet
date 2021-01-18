@@ -75,8 +75,7 @@ if __name__ == '__main__':
     model.compile(Adam())
 
     num_train_batches = math.ceil(len(Y_train) / train_batch_size)
-    num_val_examples = len(Y_val)
-    num_val_batches = math.ceil(num_val_examples / val_batch_size)
+    num_val_batches = math.ceil(len(Y_val) / val_batch_size)
 
     def evaluate(model, in_s):
         s = str2id(in_s, token2id)
@@ -85,8 +84,7 @@ if __name__ == '__main__':
         y = np.argmax(y, axis=-1)
         out_s = ''.join([id2token[i] for i in y])
         out_s = out_s.replace('sep', '，').replace('non', '')
-        print(f'上联：{in_s}')
-        print(f'下联：{out_s}')
+        print(f'上句：{in_s}\t下句：{out_s}')
 
     class Evaluator(Callback):
         def __init__(self):
@@ -94,6 +92,7 @@ if __name__ == '__main__':
 
         def on_epoch_end(self, epoch, logs=None):
             evaluate(self.model, '风弦未拨心先乱')
+            evaluate(self.model, '菊崇廉，兰思洁')
             evaluate(self.model, '薰风生殿阁')
             evaluate(self.model, '玉液')
 
